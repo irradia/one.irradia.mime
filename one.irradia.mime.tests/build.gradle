@@ -38,11 +38,6 @@ android {
   }
 }
 
-task sourceJar(type: Jar) {
-  from android.sourceSets.main.java.srcDirs
-  classifier "sources"
-}
-
 /*
  * Log unit test executions.
  */

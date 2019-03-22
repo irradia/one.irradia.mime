@@ -24,27 +24,35 @@ buildscript {
   }
 
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.3.2'
+    classpath "com.android.tools.build:gradle:3.3.2"
     classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    classpath "com.bmuschko:gradle-nexus-plugin:2.3.1"
+    classpath 'com.vanniktech:gradle-maven-publish-plugin:0.8.0'
   }
 }
 
 ext {
   androidBuildToolsVersion = "28.0.3"
-  androidCompileSDKVersion = 27
+  androidCompileSDKVersion = 28
   androidMinimumSDKVersion = 21
   androidTargetSDKVersion  = 28
+
+  mavenGroup   = 'one.irradia.mime'
+  mavenVersion = '0.0.1'
 }
 
 allprojects {
-  group = 'one.irradia.mime'
-  version = '0.0.1'
-
-  apply plugin: 'maven'
-  apply plugin: 'maven-publish'
+  group   = mavenGroup
+  version = mavenVersion
 }
 
 subprojects {
+
+  apply plugin: 'maven'
+  apply plugin: 'maven-publish'
+  apply plugin: 'com.bmuschko.nexus'
+  apply plugin: 'com.vanniktech.maven.publish'
+
   repositories {
     mavenCentral()
     jcenter()
@@ -69,5 +77,4 @@ subprojects {
     dependencyAndroidTestOrchestrator  "com.android.support.test:orchestrator:1.0.2"
   }
 }
-
 

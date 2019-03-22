@@ -31,8 +31,3 @@ android {
     targetSdkVersion androidTargetSDKVersion
   }
 }
-
-task sourceJar(type: Jar) {
-  from android.sourceSets.main.java.srcDirs
-  classifier "sources"
-}
