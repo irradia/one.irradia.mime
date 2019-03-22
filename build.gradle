@@ -46,12 +46,19 @@ allprojects {
   version = mavenVersion
 }
 
-subprojects {
+apply plugin: 'java'
+apply plugin: 'com.vanniktech.maven.publish'
 
-  apply plugin: 'maven'
-  apply plugin: 'maven-publish'
-  apply plugin: 'com.bmuschko.nexus'
-  apply plugin: 'com.vanniktech.maven.publish'
+mavenPublish {
+  targets {
+    uploadArchives {
+      releaseRepositoryUrl  = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
+      snapshotRepositoryUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
+    }
+  }
+}
+
+subprojects {
 
   repositories {
     mavenCentral()
