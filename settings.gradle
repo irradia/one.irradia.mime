@@ -1,0 +1,4 @@
+include ':one.irradia.mime.api'
+include ':one.irradia.mime.vanilla'
+include ':one.irradia.mime.tests'
+include ':one.irradia.mime.tests.device'
