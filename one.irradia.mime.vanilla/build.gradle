@@ -25,13 +25,3 @@ configurations {
 dependencies {
   api project(":one.irradia.mime.api")
 }
-
-android {
-  compileSdkVersion androidCompileSDKVersion
-  buildToolsVersion androidBuildToolsVersion
-
-  defaultConfig {
-    minSdkVersion androidMinimumSDKVersion
-    targetSdkVersion androidTargetSDKVersion
-  }
-}

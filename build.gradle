@@ -44,18 +44,27 @@ allprojects {
 }
 
 apply plugin: 'java'
-apply plugin: 'com.vanniktech.maven.publish'
-
-mavenPublish {
-  targets {
-    uploadArchives {
-      releaseRepositoryUrl  = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
-      snapshotRepositoryUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
-    }
-  }
-}
 
 subprojects {
+
+  apply plugin: 'com.android.library'
+  apply plugin: 'kotlin-android'
+
+  android {
+    compileSdkVersion androidCompileSDKVersion
+    buildToolsVersion androidBuildToolsVersion
+
+    defaultConfig {
+      minSdkVersion androidMinimumSDKVersion
+      targetSdkVersion androidTargetSDKVersion
+      testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    testOptions {
+      execution 'ANDROID_TEST_ORCHESTRATOR'
+      animationsDisabled = true
+    }
+  }
 
   repositories {
     mavenCentral()
