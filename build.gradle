@@ -36,14 +36,11 @@ ext {
   androidCompileSDKVersion = 28
   androidMinimumSDKVersion = 21
   androidTargetSDKVersion  = 28
-
-  mavenGroup   = 'one.irradia.mime'
-  mavenVersion = '0.0.1'
 }
 
 allprojects {
-  group   = mavenGroup
-  version = mavenVersion
+  group   = project.ext["GROUP"]
+  version = project.ext["VERSION_NAME"]
 }
 
 apply plugin: 'java'
