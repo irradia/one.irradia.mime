@@ -2,6 +2,7 @@ one.irradia.mime
 ===
 
 ![Travis (.org)](https://img.shields.io/travis/irradia/one.irradia.mime.svg)
+![Maven Central](https://img.shields.io/maven-central/v/one.irradia.mime/one.irradia.mime.svg?style=flat-square)
 
 ![mime](./src/site/resources/mime.jpg?raw=true)
 
