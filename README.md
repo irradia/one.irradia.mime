@@ -39,6 +39,10 @@ whatever is the latest version published to Maven Central:
 ```
 
 ```
+repositories {
+  mavenCentral()
+}
+
 implementation "one.irradia.mime:one.irradia.mime.api:${LATEST_VERSION_HERE}"
 implementation "one.irradia.mime:one.irradia.mime.vanilla:${LATEST_VERSION_HERE}"
 ```
