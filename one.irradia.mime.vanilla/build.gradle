@@ -14,24 +14,10 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'com.vanniktech.maven.publish'
-
 configurations {
   implementation.extendsFrom dependencyKotlinStdlib
 }
 
 dependencies {
   api project(":one.irradia.mime.api")
-}
-
-android {
-  compileSdkVersion androidCompileSDKVersion
-  buildToolsVersion androidBuildToolsVersion
-
-  defaultConfig {
-    minSdkVersion androidMinimumSDKVersion
-    targetSdkVersion androidTargetSDKVersion
-  }
 }
