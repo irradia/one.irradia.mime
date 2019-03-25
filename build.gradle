@@ -39,6 +39,15 @@ ext {
   androidTargetSDKVersion  = 28
 }
 
+apply plugin: "io.codearte.nexus-staging"
+apply plugin: "com.vanniktech.android.junit.jacoco"
+
+nexusStaging {
+  packageGroup                = "one.irradia"
+  numberOfRetries             = 32
+  delayBetweenRetriesInMillis = 30000
+}
+
 allprojects {
   group   = project.ext["GROUP"]
   version = project.ext["VERSION_NAME"]
@@ -83,7 +92,6 @@ subprojects { project ->
 
         pom {
           artifactId  = POM_ARTIFACT_ID
-
           name        = POM_NAME
           packaging   = POM_PACKAGING
           description = POM_DESCRIPTION
@@ -119,6 +127,11 @@ subprojects { project ->
         def releasesRepoUrl = "https://oss.sonatype.org/service/local/staging/deploy/maven2/"
         def snapshotsRepoUrl = "https://oss.sonatype.org/content/repositories/snapshots/"
         url = version.endsWith("SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
+
+        credentials(PasswordCredentials) {
+          username project.ext["nexusUsername"]
+          password project.ext["nexusPassword"]
+        }
       }
     }
   }
@@ -158,5 +171,3 @@ subprojects { project ->
   }
 }
 
-apply plugin: "io.codearte.nexus-staging"
-apply plugin: "com.vanniktech.android.junit.jacoco"
