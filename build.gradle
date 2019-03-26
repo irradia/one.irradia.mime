@@ -138,8 +138,8 @@ subprojects { project ->
         url = version.endsWith("SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
 
         credentials(PasswordCredentials) {
-          username project.ext["nexusUsername"]
-          password project.ext["nexusPassword"]
+          username nexusUsername
+          password nexusPassword
         }
       }
     }
