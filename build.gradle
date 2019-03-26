@@ -37,6 +37,13 @@ ext {
   androidCompileSDKVersion = 28
   androidMinimumSDKVersion = 21
   androidTargetSDKVersion  = 28
+
+  if (project.ext["nexusUsername"] == null) {
+    project.ext["nexusUsername"] = ""
+  }
+  if (project.ext["nexusPassword"] == null) {
+    project.ext["nexusPassword"] = ""
+  }
 }
 
 apply plugin: "io.codearte.nexus-staging"
@@ -45,7 +52,7 @@ apply plugin: "com.vanniktech.android.junit.jacoco"
 nexusStaging {
   packageGroup                = "one.irradia"
   numberOfRetries             = 32
-  delayBetweenRetriesInMillis = 30000
+  delayBetweenRetriesInMillis = 2000
 }
 
 allprojects {
@@ -129,12 +136,6 @@ subprojects { project ->
         url = version.endsWith("SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
 
         credentials(PasswordCredentials) {
-          if (!hasProperty("nexusUsername")) {
-            project.ext["nexusUsername"] = ""
-          }
-          if (!hasProperty("nexusPassword")) {
-            project.ext["nexusPassword"] = ""
-          }
           username project.ext["nexusUsername"]
           password project.ext["nexusPassword"]
         }
