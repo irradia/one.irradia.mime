@@ -38,11 +38,13 @@ ext {
   androidMinimumSDKVersion = 21
   androidTargetSDKVersion  = 28
 
-  if (project.ext["nexusUsername"] == null) {
-    project.ext["nexusUsername"] = ""
+  if (!project.hasProperty("nexusUsername")) {
+    logger.warn("No nexusUsername property specified: Using an empty value")
+    nexusUsername = ""
   }
-  if (project.ext["nexusPassword"] == null) {
-    project.ext["nexusPassword"] = ""
+  if (!project.hasProperty("nexusPassword")) {
+    logger.warn("No nexusPassword property specified: Using an empty value")
+    nexusPassword = ""
   }
 }
 
