@@ -37,6 +37,15 @@ ext {
   androidCompileSDKVersion = 28
   androidMinimumSDKVersion = 21
   androidTargetSDKVersion  = 28
+
+  if (!project.hasProperty("nexusUsername")) {
+    logger.warn("No nexusUsername property specified: Using an empty value")
+    nexusUsername = ""
+  }
+  if (!project.hasProperty("nexusPassword")) {
+    logger.warn("No nexusPassword property specified: Using an empty value")
+    nexusPassword = ""
+  }
 }
 
 apply plugin: "io.codearte.nexus-staging"
@@ -45,7 +54,7 @@ apply plugin: "com.vanniktech.android.junit.jacoco"
 nexusStaging {
   packageGroup                = "one.irradia"
   numberOfRetries             = 32
-  delayBetweenRetriesInMillis = 30000
+  delayBetweenRetriesInMillis = 2000
 }
 
 allprojects {
@@ -82,7 +91,7 @@ subprojects { project ->
 
   task androidSourcesJar(type: Jar) {
     classifier = "sources"
-    from android.sourceSets.main.java.sourceFiles
+    from "src/main/java", "src/main/resources"
   }
 
   publishing {
@@ -129,14 +138,8 @@ subprojects { project ->
         url = version.endsWith("SNAPSHOT") ? snapshotsRepoUrl : releasesRepoUrl
 
         credentials(PasswordCredentials) {
-          if (!hasProperty("nexusUsername")) {
-            project.ext["nexusUsername"] = ""
-          }
-          if (!hasProperty("nexusPassword")) {
-            project.ext["nexusPassword"] = ""
-          }
-          username project.ext["nexusUsername"]
-          password project.ext["nexusPassword"]
+          username nexusUsername
+          password nexusPassword
         }
       }
     }
