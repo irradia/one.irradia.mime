@@ -82,6 +82,17 @@ subprojects { project ->
       apply plugin: "java"
       apply plugin: "java-library"
       apply plugin: "kotlin"
+
+      /*
+       * Apply the Animal Sniffer plugin to check that code is Android compatible.
+       */
+
+      apply plugin: "ru.vyarus.animalsniffer"
+
+      dependencies {
+        signature "org.codehaus.mojo.signature:java16:1.1@signature"
+        signature "net.sf.androidscents.signature:android-api-level-14:4.0_r4@signature"
+      }
       break
 
     case "aar":
@@ -111,15 +122,6 @@ subprojects { project ->
       throw new IllegalStateException(
         "Unrecognized packaging type ${POM_PACKAGING} for ${project}")
   }
-
-  apply plugin: "ru.vyarus.animalsniffer"
-
-  /* XXX: Missing signature method?
-  dependencies {
-    signature "org.codehaus.mojo.signature:java16:1.1@signature"
-    signature "net.sf.androidscents.signature:android-api-level-14:4.0_r4@signature"
-  }
-  */
 
   apply plugin: "digital.wup.android-maven-publish"
   apply plugin: "signing"
