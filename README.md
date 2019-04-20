@@ -10,6 +10,14 @@ one.irradia.mime
 
 ![mime](./src/site/resources/mime.jpg?raw=true)
 
+## Features
+
+* Parse RFC 2045 MIME type strings
+* Full positional/lexical information to pinpoint errors in data
+* ISC license
+* High coverage automated test suite
+* [OSGi](http://www.osgi.org)-ready
+
 ## Building
 
 Install the Android SDK. The package has no dependencies on the Android API
