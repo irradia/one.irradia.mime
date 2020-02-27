@@ -14,8 +14,10 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-configurations {
-  implementation.extendsFrom dependencyKotlinStdlib
-  api.extendsFrom            dependencyKotlinReflect
-  compileOnly.extendsFrom    dependencyOSGiBundleAnnotation
+dependencies {
+  api libraries.kotlinReflect
+
+  implementation libraries.kotlinStdlib
+
+  compileOnly libraries.OSGiBundleAnnotation
 }
