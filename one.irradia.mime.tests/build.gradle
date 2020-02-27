@@ -14,15 +14,13 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-configurations {
-  api.extendsFrom dependencyJUnit
-
-  implementation.extendsFrom dependencyKotlinStdlib
-}
-
 dependencies {
   api project(":one.irradia.mime.api")
   api project(":one.irradia.mime.vanilla")
+
+  api libraries.jUnit
+
+  implementation libraries.kotlinStdlib
 }
 
 /*
