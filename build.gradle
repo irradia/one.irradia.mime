@@ -78,6 +78,7 @@ nexusStaging {
   packageGroup = "one.irradia"
   numberOfRetries = 32
   delayBetweenRetriesInMillis = 2000
+  stagingProfileId = "a56bb91d0cd124"
 }
 
 allprojects {

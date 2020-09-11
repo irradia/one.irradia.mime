@@ -13,7 +13,8 @@ import java.io.Serializable
 data class MIMEType(
   val type: String,
   val subtype: String,
-  val parameters: Map<String, String>): Serializable {
+  val parameters: Map<String, String>
+): Serializable {
 
   /**
    * The combined type and subtype (not including parameters)
