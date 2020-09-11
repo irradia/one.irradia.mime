@@ -19,7 +19,7 @@ object MIMECompatibility {
    * attributes.
    */
 
-  fun strict(
+  fun isCompatibleStrict(
     typeA: MIMEType,
     typeB: MIMEType
   ): Boolean =
@@ -30,34 +30,34 @@ object MIMECompatibility {
    * and the subtype of [typeA] is equal to the subtyle of [typeB].
    */
 
-  fun strictWithoutAttributes(
+  fun isCompatibleStrictWithoutAttributes(
     typeA: MIMEType,
     typeB: MIMEType
   ): Boolean =
     typeA.type == typeB.type && typeA.subtype == typeB.subtype
 
   /**
-   * If either [typeA] or [typeB] are [strictWithoutAttributes] compatible with
+   * If either [typeA] or [typeB] are [isCompatibleStrictWithoutAttributes] compatible with
    * [applicationOctetStream], then [typeA] and [typeB] are compatible. Otherwise,
    * [typeA] and [typeB] are compatible if they are compatible according to
-   * [strictWithoutAttributes].
+   * [isCompatibleStrictWithoutAttributes].
    */
 
-  fun lax(
+  fun isCompatibleLax(
     typeA: MIMEType,
     typeB: MIMEType
   ): Boolean {
-    if (this.strictWithoutAttributes(typeA, this.applicationOctetStream)) {
+    if (this.isCompatibleStrictWithoutAttributes(typeA, this.applicationOctetStream)) {
       return true
     }
-    if (this.strictWithoutAttributes(typeB, this.applicationOctetStream)) {
+    if (this.isCompatibleStrictWithoutAttributes(typeB, this.applicationOctetStream)) {
       return true
     }
-    return this.strictWithoutAttributes(typeA, typeB)
+    return this.isCompatibleStrictWithoutAttributes(typeA, typeB)
   }
 
   /**
-   * The [strict] function as a compatibility decision.
+   * The [isCompatibleStrict] function as a compatibility decision.
    */
 
   val strict: MIMECompatibilityType =
@@ -66,11 +66,11 @@ object MIMECompatibility {
         typeA: MIMEType,
         typeB: MIMEType
       ): Boolean =
-        this@MIMECompatibility.strict(typeA, typeB)
+        this@MIMECompatibility.isCompatibleStrict(typeA, typeB)
     }
 
   /**
-   * The [strictWithoutAttributes] function as a compatibility decision.
+   * The [isCompatibleStrictWithoutAttributes] function as a compatibility decision.
    */
 
   val strictWithoutAttributes: MIMECompatibilityType =
@@ -79,11 +79,11 @@ object MIMECompatibility {
         typeA: MIMEType,
         typeB: MIMEType
       ): Boolean =
-        this@MIMECompatibility.strictWithoutAttributes(typeA, typeB)
+        this@MIMECompatibility.isCompatibleStrictWithoutAttributes(typeA, typeB)
     }
 
   /**
-   * The [lax] function as a compatibility decision.
+   * The [isCompatibleLax] function as a compatibility decision.
    */
 
   val lax: MIMECompatibilityType =
@@ -91,6 +91,6 @@ object MIMECompatibility {
       override fun isCompatibleWith(
         typeA: MIMEType,
         typeB: MIMEType
-      ): Boolean = this@MIMECompatibility.lax(typeA, typeB)
+      ): Boolean = this@MIMECompatibility.isCompatibleLax(typeA, typeB)
     }
 }

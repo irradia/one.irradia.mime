@@ -11,7 +11,7 @@ abstract class MIMECompatibilityContract {
   @Test
   fun testStrictObvious() {
     assertTrue(
-      MIMECompatibility.strict(
+      MIMECompatibility.isCompatibleStrict(
         MIMECompatibility.applicationOctetStream,
         MIMECompatibility.applicationOctetStream))
     assertTrue(
@@ -23,7 +23,7 @@ abstract class MIMECompatibilityContract {
   @Test
   fun testStrictWithoutAttributesObvious() {
     assertTrue(
-      MIMECompatibility.strictWithoutAttributes(
+      MIMECompatibility.isCompatibleStrictWithoutAttributes(
         MIMECompatibility.applicationOctetStream,
         MIMECompatibility.applicationOctetStream))
     assertTrue(
@@ -35,7 +35,7 @@ abstract class MIMECompatibilityContract {
   @Test
   fun testLaxObvious() {
     assertTrue(
-      MIMECompatibility.lax(
+      MIMECompatibility.isCompatibleLax(
         MIMECompatibility.applicationOctetStream,
         MIMECompatibility.applicationOctetStream))
     assertTrue(
@@ -47,15 +47,15 @@ abstract class MIMECompatibilityContract {
   @Test
   fun testStrictIncompatible0() {
     assertTrue(
-      MIMECompatibility.strict(
+      MIMECompatibility.isCompatibleStrict(
         MIMEType("text", "plain", mapOf()),
         MIMEType("text", "plain", mapOf())))
     assertFalse(
-      MIMECompatibility.strict(
+      MIMECompatibility.isCompatibleStrict(
         MIMEType("text", "plain", mapOf()),
         MIMEType("text", "plain", mapOf(Pair("profile","other")))))
     assertFalse(
-      MIMECompatibility.strict(
+      MIMECompatibility.isCompatibleStrict(
         MIMEType("text", "plain", mapOf()),
         MIMECompatibility.applicationOctetStream))
   }
@@ -63,15 +63,15 @@ abstract class MIMECompatibilityContract {
   @Test
   fun testStrictWithoutAttributesIncompatible0() {
     assertTrue(
-      MIMECompatibility.strictWithoutAttributes(
+      MIMECompatibility.isCompatibleStrictWithoutAttributes(
         MIMEType("text", "plain", mapOf(Pair("a","b"))),
         MIMEType("text", "plain", mapOf(Pair("a","b")))))
     assertFalse(
-      MIMECompatibility.strictWithoutAttributes(
+      MIMECompatibility.isCompatibleStrictWithoutAttributes(
         MIMEType("text", "plain", mapOf(Pair("a","b"))),
         MIMEType("text", "json", mapOf(Pair("a","b")))))
     assertFalse(
-      MIMECompatibility.strictWithoutAttributes(
+      MIMECompatibility.isCompatibleStrictWithoutAttributes(
         MIMEType("text", "plain", mapOf()),
         MIMECompatibility.applicationOctetStream))
   }
@@ -79,19 +79,19 @@ abstract class MIMECompatibilityContract {
   @Test
   fun testLaxIncompatible0() {
     assertTrue(
-      MIMECompatibility.lax(
+      MIMECompatibility.isCompatibleLax(
         MIMEType("text", "plain", mapOf()),
         MIMEType("text", "plain", mapOf())))
     assertTrue(
-      MIMECompatibility.lax(
+      MIMECompatibility.isCompatibleLax(
         MIMEType("text", "plain", mapOf()),
         MIMEType("text", "plain", mapOf(Pair("profile","other")))))
     assertTrue(
-      MIMECompatibility.lax(
+      MIMECompatibility.isCompatibleLax(
         MIMEType("text", "plain", mapOf()),
         MIMECompatibility.applicationOctetStream))
     assertTrue(
-      MIMECompatibility.lax(
+      MIMECompatibility.isCompatibleLax(
         MIMEType(
           MIMECompatibility.applicationOctetStream.type,
           MIMECompatibility.applicationOctetStream.subtype,
