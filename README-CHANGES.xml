@@ -4,9 +4,14 @@
     <c:release date="2020-02-27T00:00:00+00:00" ticket-system="com.io7m.github.irradia" version="1.0.0">
       <c:changes/>
     </c:release>
-    <c:release date="2020-09-11T16:17:16+00:00" ticket-system="com.io7m.github.irradia" version="1.1.0">
+    <c:release date="2020-09-11T00:00:00+00:00" ticket-system="com.io7m.github.irradia" version="1.1.0">
       <c:changes>
-        <c:change date="2020-09-11T16:17:16+00:00" summary="Add methods for determining the compatibility of MIME types"/>
+        <c:change date="2020-09-11T00:00:00+00:00" summary="Add methods for determining the compatibility of MIME types"/>
+      </c:changes>
+    </c:release>
+    <c:release date="2020-09-30T14:34:22+00:00" ticket-system="com.io7m.github.irradia" version="1.1.1">
+      <c:changes>
+        <c:change date="2020-09-30T14:34:22+00:00" summary="Fix equality definition for MIMEType class"/>
       </c:changes>
     </c:release>
   </c:releases>

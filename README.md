@@ -62,19 +62,6 @@ implementation "one.irradia.mime:one.irradia.mime.vanilla:${LATEST_VERSION_HERE}
 Library code is encouraged to depend only upon the API package in order to give consumers
 the freedom to use other implementations of the API if desired.
 
-## Publishing Releases
-
-Releases are published to Maven Central with the following invocation:
-
-```
-$ ./gradlew clean assemble publish closeAndReleaseRepository
-```
-
-Consult the documentation for the [Gradle Signing plugin](https://docs.gradle.org/current/userguide/signing_plugin.html)
-and the [Gradle Nexus staging plugin](https://github.com/Codearte/gradle-nexus-staging-plugin/) for
-details on what needs to go into your `~/.gradle/gradle.properties` file to do the appropriate
-PGP signing of artifacts and uploads to Maven Central.
-
 ## Semantic Versioning
 
 All [irradia.one](https://www.irradia.one) packages obey [Semantic Versioning](https://www.semver.org)
