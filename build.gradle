@@ -352,3 +352,8 @@ Automatic-Module-Name: ${POM_AUTOMATIC_MODULE_NAME}
   }
 }
 
+apply from: file("$rootDir/ktlint.gradle")
+
+subprojects {
+  assemble.dependsOn ktlint
+}
