@@ -20,5 +20,3 @@ jobs:
         run: .ci/ci-main.sh pull-request
       - name: Code Coverage
         uses: codecov/codecov-action@v1
-        with:
-          verbose: true
