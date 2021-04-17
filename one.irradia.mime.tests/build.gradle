@@ -18,9 +18,9 @@ dependencies {
   api project(":one.irradia.mime.api")
   api project(":one.irradia.mime.vanilla")
 
-  api libraries.jUnit
+  api libraries.junit
 
-  implementation libraries.kotlinStdlib
+  implementation libraries.kotlin_stdlib
 }
 
 /*

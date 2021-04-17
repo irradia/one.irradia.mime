@@ -15,11 +15,8 @@
  */
 
 ext.libraries = [
-  OSGiBundleAnnotation    : "org.osgi:org.osgi.annotation.bundle:1.1.0",
-  kotlinReflect           : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
-  kotlinStdlib            : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
-  jUnit                   : "junit:junit:4.12",
-  androidSupportTestRules : "com.android.support.test:rules:1.0.2",
-  androidSupportTestRunner: "com.android.support.test:runner:1.0.2",
-  androidTestOrchestrator : "com.android.support.test:orchestrator:1.0.2",
+  osgi_bundle_annotation     : "org.osgi:org.osgi.annotation.bundle:1.1.0",
+  kotlin_reflect             : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
+  kotlin_stdlib              : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version",
+  junit                      : "junit:junit:4.13.2"
 ]

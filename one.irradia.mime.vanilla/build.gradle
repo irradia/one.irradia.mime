@@ -17,6 +17,6 @@
 dependencies {
   api project(":one.irradia.mime.api")
 
-  implementation libraries.kotlinStdlib
-  compileOnly libraries.OSGiBundleAnnotation
+  implementation libraries.kotlin_stdlib
+  compileOnly libraries.osgi_bundle_annotation
 }

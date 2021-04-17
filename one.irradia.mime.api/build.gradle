@@ -15,9 +15,9 @@
  */
 
 dependencies {
-  api libraries.kotlinReflect
+  api libraries.kotlin_reflect
 
-  implementation libraries.kotlinStdlib
+  implementation libraries.kotlin_stdlib
 
-  compileOnly libraries.OSGiBundleAnnotation
+  compileOnly libraries.osgi_bundle_annotation
 }
