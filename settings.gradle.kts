@@ -1,5 +1,5 @@
 /*
- * Copyright © 2019 <code@irradia.one> http://www.irradia.one
+ * Copyright © 2023 Mark Raynsford <code@io7m.com> https://www.io7m.com
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -14,10 +14,13 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-dependencies {
-  api libraries.kotlin_reflect
-
-  implementation libraries.kotlin_stdlib
-
-  compileOnly libraries.osgi_bundle_annotation
+plugins {
+    // Apply the foojay-resolver plugin to allow automatic download of JDKs
+    id("org.gradle.toolchains.foojay-resolver-convention").version("0.4.0")
 }
+
+rootProject.name = "one.irradia.mime"
+
+include("one.irradia.mime.api")
+include("one.irradia.mime.tests")
+include("one.irradia.mime.vanilla")

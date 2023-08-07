@@ -1,5 +1,7 @@
+import org.jetbrains.kotlin.gradle.targets.js.nodejs.NodeJsRootPlugin.Companion.kotlinNpmResolutionManager
+
 /*
- * Copyright © 2019 <code@irradia.one> http://www.irradia.one
+ * Copyright © 2023 Mark Raynsford <code@io7m.com> https://www.io7m.com
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -15,19 +17,8 @@
  */
 
 dependencies {
-  api project(":one.irradia.mime.api")
-  api project(":one.irradia.mime.vanilla")
+    compileOnly(libs.osgi.bundle.annotation)
 
-  api libraries.junit
-
-  implementation libraries.kotlin_stdlib
-}
-
-/*
- * Log unit test executions.
- */
-
-tasks.matching {it instanceof Test}.all {
-  testLogging.events = ["failed", "passed", "skipped"]
-  testLogging.exceptionFormat = "full"
+    implementation(libs.kotlin.stdlib)
+    implementation(libs.kotlin.reflect)
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright © 2021 <code@irradia.one> http://www.irradia.one
+ * Copyright © 2023 Mark Raynsford <code@io7m.com> https://www.io7m.com
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -14,34 +14,10 @@
  * IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
  */
 
-repositories {
-  jcenter()
-}
-
-configurations {
-  ktlint
-}
-
 dependencies {
-  ktlint "com.pinterest:ktlint:0.40.0"
-}
+    implementation(project(":one.irradia.mime.api"))
+    implementation(project(":one.irradia.mime.vanilla"))
 
-task ktlint(type: JavaExec, group: "quality") {
-  description = "Check Kotlin code style."
-  classpath = configurations.ktlint
-  main = "com.pinterest.ktlint.Main"
-  args "src/**/*.kt"
-}
-
-task ktlintFormat(type: JavaExec, group: "quality") {
-  description = "Fix Kotlin code style deviations."
-  classpath = configurations.ktlint
-  main = "com.pinterest.ktlint.Main"
-  args "-F", "src/**/*.kt"
-}
-
-afterEvaluate {
-  tasks.withType(Test) {
-    dependsOn 'ktlint'
-  }
+    implementation(libs.junit.jupiter.api)
+    implementation(libs.junit.jupiter.engine)
 }

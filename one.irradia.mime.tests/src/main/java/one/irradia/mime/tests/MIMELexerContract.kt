@@ -8,8 +8,8 @@ import one.irradia.mime.api.MIMEToken.MIMETextToken.Quoted
 import one.irradia.mime.api.MIMEToken.MIMETextToken.Text
 import one.irradia.mime.api.MIMEToken.Semicolon
 import one.irradia.mime.api.MIMEToken.Slash
-import org.junit.Assert
-import org.junit.Test
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Test
 
 abstract class MIMELexerContract {
 
@@ -19,7 +19,7 @@ abstract class MIMELexerContract {
   fun testEmpty() {
     val lexer = lexer("")
     val token = lexer.token()
-    Assert.assertEquals(MIMELexerResult.Success(EOF(0)), token)
+    assertEquals(MIMELexerResult.Success(EOF(0)), token)
   }
 
   @Test
@@ -28,17 +28,17 @@ abstract class MIMELexerContract {
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(0, "type")), token)
+      assertEquals(MIMELexerResult.Success(Text(0, "type")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(4)), token)
+      assertEquals(MIMELexerResult.Success(EOF(4)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(4)), token)
+      assertEquals(MIMELexerResult.Success(EOF(4)), token)
     }
   }
 
@@ -48,17 +48,17 @@ abstract class MIMELexerContract {
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Semicolon(0)), token)
+      assertEquals(MIMELexerResult.Success(Semicolon(0)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(1)), token)
+      assertEquals(MIMELexerResult.Success(EOF(1)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(1)), token)
+      assertEquals(MIMELexerResult.Success(EOF(1)), token)
     }
   }
 
@@ -68,22 +68,22 @@ abstract class MIMELexerContract {
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Semicolon(0)), token)
+      assertEquals(MIMELexerResult.Success(Semicolon(0)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Semicolon(1)), token)
+      assertEquals(MIMELexerResult.Success(Semicolon(1)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(2)), token)
+      assertEquals(MIMELexerResult.Success(EOF(2)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(2)), token)
+      assertEquals(MIMELexerResult.Success(EOF(2)), token)
     }
   }
 
@@ -93,27 +93,27 @@ abstract class MIMELexerContract {
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Slash(0)), token)
+      assertEquals(MIMELexerResult.Success(Slash(0)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Semicolon(1)), token)
+      assertEquals(MIMELexerResult.Success(Semicolon(1)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(2, "/")), token)
+      assertEquals(MIMELexerResult.Success(Text(2, "/")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(3)), token)
+      assertEquals(MIMELexerResult.Success(EOF(3)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(3)), token)
+      assertEquals(MIMELexerResult.Success(EOF(3)), token)
     }
   }
 
@@ -123,17 +123,17 @@ abstract class MIMELexerContract {
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Equals(0)), token)
+      assertEquals(MIMELexerResult.Success(Equals(0)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(1)), token)
+      assertEquals(MIMELexerResult.Success(EOF(1)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(1)), token)
+      assertEquals(MIMELexerResult.Success(EOF(1)), token)
     }
   }
 
@@ -143,27 +143,27 @@ abstract class MIMELexerContract {
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(0, "type")), token)
+      assertEquals(MIMELexerResult.Success(Text(0, "type")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Slash(4)), token)
+      assertEquals(MIMELexerResult.Success(Slash(4)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(5, "subtype")), token)
+      assertEquals(MIMELexerResult.Success(Text(5, "subtype")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(12)), token)
+      assertEquals(MIMELexerResult.Success(EOF(12)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(12)), token)
+      assertEquals(MIMELexerResult.Success(EOF(12)), token)
     }
   }
 
@@ -173,17 +173,17 @@ abstract class MIMELexerContract {
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Quoted(1, "type/subtype")), token)
+      assertEquals(MIMELexerResult.Success(Quoted(1, "type/subtype")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(14)), token)
+      assertEquals(MIMELexerResult.Success(EOF(14)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(14)), token)
+      assertEquals(MIMELexerResult.Success(EOF(14)), token)
     }
   }
 
@@ -193,47 +193,47 @@ abstract class MIMELexerContract {
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(0, "text")), token)
+      assertEquals(MIMELexerResult.Success(Text(0, "text")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Slash(4)), token)
+      assertEquals(MIMELexerResult.Success(Slash(4)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(5, "plain")), token)
+      assertEquals(MIMELexerResult.Success(Text(5, "plain")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Semicolon(10)), token)
+      assertEquals(MIMELexerResult.Success(Semicolon(10)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(11, "charset")), token)
+      assertEquals(MIMELexerResult.Success(Text(11, "charset")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Equals(18)), token)
+      assertEquals(MIMELexerResult.Success(Equals(18)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(19, "utf-8")), token)
+      assertEquals(MIMELexerResult.Success(Text(19, "utf-8")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(24)), token)
+      assertEquals(MIMELexerResult.Success(EOF(24)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(24)), token)
+      assertEquals(MIMELexerResult.Success(EOF(24)), token)
     }
   }
 
@@ -243,47 +243,47 @@ abstract class MIMELexerContract {
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(0, "text")), token)
+      assertEquals(MIMELexerResult.Success(Text(0, "text")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Slash(4)), token)
+      assertEquals(MIMELexerResult.Success(Slash(4)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(5, "plain")), token)
+      assertEquals(MIMELexerResult.Success(Text(5, "plain")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Semicolon(10)), token)
+      assertEquals(MIMELexerResult.Success(Semicolon(10)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(11, "charset")), token)
+      assertEquals(MIMELexerResult.Success(Text(11, "charset")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Equals(18)), token)
+      assertEquals(MIMELexerResult.Success(Equals(18)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Quoted(20, "utf-8")), token)
+      assertEquals(MIMELexerResult.Success(Quoted(20, "utf-8")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(26)), token)
+      assertEquals(MIMELexerResult.Success(EOF(26)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(26)), token)
+      assertEquals(MIMELexerResult.Success(EOF(26)), token)
     }
   }
 
@@ -293,47 +293,47 @@ abstract class MIMELexerContract {
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(0, "text")), token)
+      assertEquals(MIMELexerResult.Success(Text(0, "text")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Slash(4)), token)
+      assertEquals(MIMELexerResult.Success(Slash(4)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(5, "html")), token)
+      assertEquals(MIMELexerResult.Success(Text(5, "html")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Semicolon(9)), token)
+      assertEquals(MIMELexerResult.Success(Semicolon(9)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(10, "profile")), token)
+      assertEquals(MIMELexerResult.Success(Text(10, "profile")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Equals(17)), token)
+      assertEquals(MIMELexerResult.Success(Equals(17)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(Text(18, "http://librarysimplified.org/terms/profiles/streaming-media")), token)
+      assertEquals(MIMELexerResult.Success(Text(18, "http://librarysimplified.org/terms/profiles/streaming-media")), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(77)), token)
+      assertEquals(MIMELexerResult.Success(EOF(77)), token)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Success(EOF(77)), token)
+      assertEquals(MIMELexerResult.Success(EOF(77)), token)
     }
   }
 
@@ -343,12 +343,12 @@ abstract class MIMELexerContract {
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Failure::class.java, token.javaClass)
+      assertEquals(MIMELexerResult.Failure::class.java, token.javaClass)
     }
 
     run {
       val token = lexer.token()
-      Assert.assertEquals(MIMELexerResult.Failure::class.java, token.javaClass)
+      assertEquals(MIMELexerResult.Failure::class.java, token.javaClass)
     }
   }
 }

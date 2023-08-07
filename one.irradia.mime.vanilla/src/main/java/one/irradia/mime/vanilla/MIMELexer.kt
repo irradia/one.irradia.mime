@@ -66,7 +66,7 @@ class MIMELexer private constructor(
         null ->
           throw LexerUnexpectedEOF()
 
-        '"'.toInt() -> {
+        '"'.code -> {
           if (!this@MIMELexer.buffer.isEmpty()) {
             this@MIMELexer.pushBackCodepoint()
             val text = this@MIMELexer.finishText()
@@ -107,7 +107,7 @@ class MIMELexer private constructor(
             MIMEToken.EOF(this@MIMELexer.positionStart)
           }
 
-        '/'.toInt() ->
+        '/'.code ->
           if (!this@MIMELexer.buffer.isEmpty()) {
             this@MIMELexer.pushBackCodepoint()
             val text = this@MIMELexer.finishText()
@@ -120,7 +120,7 @@ class MIMELexer private constructor(
             token
           }
 
-        ';'.toInt() ->
+        ';'.code ->
           if (!this@MIMELexer.buffer.isEmpty()) {
             this@MIMELexer.pushBackCodepoint()
             val text = this@MIMELexer.finishText()
@@ -135,7 +135,7 @@ class MIMELexer private constructor(
             token
           }
 
-        '='.toInt() ->
+        '='.code ->
           if (!this@MIMELexer.buffer.isEmpty()) {
             this@MIMELexer.pushBackCodepoint()
             val text = this@MIMELexer.finishText()
@@ -148,7 +148,7 @@ class MIMELexer private constructor(
             token
           }
 
-        '"'.toInt() ->
+        '"'.code ->
           if (!this@MIMELexer.buffer.isEmpty()) {
             this@MIMELexer.pushBackCodepoint()
             val text = this@MIMELexer.finishText()
@@ -191,7 +191,7 @@ class MIMELexer private constructor(
             MIMEToken.EOF(this@MIMELexer.positionStart)
           }
 
-        ';'.toInt() ->
+        ';'.code ->
           if (!this@MIMELexer.buffer.isEmpty()) {
             this@MIMELexer.pushBackCodepoint()
             val text = this@MIMELexer.finishText()
@@ -204,7 +204,7 @@ class MIMELexer private constructor(
             token
           }
 
-        '='.toInt() ->
+        '='.code ->
           if (!this@MIMELexer.buffer.isEmpty()) {
             this@MIMELexer.pushBackCodepoint()
             val text = this@MIMELexer.finishText()
@@ -217,7 +217,7 @@ class MIMELexer private constructor(
             token
           }
 
-        '"'.toInt() ->
+        '"'.code ->
           if (!this@MIMELexer.buffer.isEmpty()) {
             this@MIMELexer.pushBackCodepoint()
             val text = this@MIMELexer.finishText()

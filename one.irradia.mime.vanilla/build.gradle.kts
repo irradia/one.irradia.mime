@@ -1,5 +1,5 @@
 /*
- * Copyright © 2019 <code@irradia.one> http://www.irradia.one
+ * Copyright © 2023 Mark Raynsford <code@io7m.com> https://www.io7m.com
  *
  * Permission to use, copy, modify, and/or distribute this software for any
  * purpose with or without fee is hereby granted, provided that the above
@@ -15,8 +15,7 @@
  */
 
 dependencies {
-  api project(":one.irradia.mime.api")
+    implementation(project(":one.irradia.mime.api"))
 
-  implementation libraries.kotlin_stdlib
-  compileOnly libraries.osgi_bundle_annotation
+    compileOnly(libs.osgi.bundle.annotation)
 }

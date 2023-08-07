@@ -1,19 +1,14 @@
 package one.irradia.mime.tests
 
 import one.irradia.mime.api.MIMEParserType
-import org.hamcrest.core.StringContains
-import org.junit.Assert
-import org.junit.Rule
-import org.junit.Test
-import org.junit.rules.ExpectedException
+import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Test
 
 abstract class MIMEParserContract {
 
   abstract fun parser(text: String): MIMEParserType
-
-  @JvmField
-  @Rule
-  val expectedException: ExpectedException = ExpectedException.none()
 
   @Test
   fun textEmpty() {
@@ -23,50 +18,50 @@ abstract class MIMEParserContract {
   @Test
   fun testTextPlain0() {
     val result = parser("text/plain").parseOrException()
-    Assert.assertEquals("text", result.type)
-    Assert.assertEquals("plain", result.subtype)
-    Assert.assertEquals("text/plain", result.fullType)
-    Assert.assertTrue(result.parameters.isEmpty())
+    assertEquals("text", result.type)
+    assertEquals("plain", result.subtype)
+    assertEquals("text/plain", result.fullType)
+    assertTrue(result.parameters.isEmpty())
   }
 
   @Test
   fun testTextPlain1() {
     val result = parser("text/plain;").parseOrException()
-    Assert.assertEquals("text", result.type)
-    Assert.assertEquals("plain", result.subtype)
-    Assert.assertEquals("text/plain", result.fullType)
-    Assert.assertTrue(result.parameters.isEmpty())
+    assertEquals("text", result.type)
+    assertEquals("plain", result.subtype)
+    assertEquals("text/plain", result.fullType)
+    assertTrue(result.parameters.isEmpty())
   }
 
   @Test
   fun testOPDS() {
     val result = parser("application/atom+xml;type=entry;profile=opds-catalog").parseOrException()
-    Assert.assertEquals("application", result.type)
-    Assert.assertEquals("atom+xml", result.subtype)
-    Assert.assertEquals("application/atom+xml", result.fullType)
-    Assert.assertTrue(result.parameters["type"] == "entry")
-    Assert.assertTrue(result.parameters["profile"] == "opds-catalog")
-    Assert.assertEquals(2, result.parameters.size)
+    assertEquals("application", result.type)
+    assertEquals("atom+xml", result.subtype)
+    assertEquals("application/atom+xml", result.fullType)
+    assertTrue(result.parameters["type"] == "entry")
+    assertTrue(result.parameters["profile"] == "opds-catalog")
+    assertEquals(2, result.parameters.size)
   }
 
   @Test
   fun testTextProfile() {
     val result = parser("text/html;profile=http://librarysimplified.org/terms/profiles/streaming-media").parseOrException()
-    Assert.assertEquals("text", result.type)
-    Assert.assertEquals("html", result.subtype)
-    Assert.assertEquals("text/html", result.fullType)
-    Assert.assertTrue(result.parameters["profile"] == "http://librarysimplified.org/terms/profiles/streaming-media")
-    Assert.assertEquals(1, result.parameters.size)
+    assertEquals("text", result.type)
+    assertEquals("html", result.subtype)
+    assertEquals("text/html", result.fullType)
+    assertTrue(result.parameters["profile"] == "http://librarysimplified.org/terms/profiles/streaming-media")
+    assertEquals(1, result.parameters.size)
   }
 
   @Test
   fun testTextProfileQuoted() {
     val result = parser("text/html;profile=\"http://librarysimplified.org/terms/profiles/streaming-media\"").parseOrException()
-    Assert.assertEquals("text", result.type)
-    Assert.assertEquals("html", result.subtype)
-    Assert.assertEquals("text/html", result.fullType)
-    Assert.assertTrue(result.parameters["profile"] == "http://librarysimplified.org/terms/profiles/streaming-media")
-    Assert.assertEquals(1, result.parameters.size)
+    assertEquals("text", result.type)
+    assertEquals("html", result.subtype)
+    assertEquals("text/html", result.fullType)
+    assertTrue(result.parameters["profile"] == "http://librarysimplified.org/terms/profiles/streaming-media")
+    assertEquals(1, result.parameters.size)
   }
 
   @Test
@@ -90,8 +85,9 @@ abstract class MIMEParserContract {
   }
 
   private fun expectFailure(message: String, parser: MIMEParserType) {
-    this.expectedException.expect(Exception::class.java)
-    this.expectedException.expectMessage(StringContains.containsString(message))
-    parser.parseOrException()
+    val ex = assertThrows(Exception::class.java) {
+      parser.parseOrException()
+    }
+    assertTrue(ex.message!!.contains(message))
   }
 }
